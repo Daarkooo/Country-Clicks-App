@@ -90,9 +90,9 @@ fun ArtSpaceUi() {
                 painter = painterResource(step_image),
                 contentDescription = " ",
                 contentScale= ContentScale.Crop,
-                modifier = Modifier.size(300.dp)
+                modifier = Modifier.size(400.dp)
                     .fillMaxSize()
-                    .padding(24.dp),
+                    .padding(32.dp),
             )
         }
         Spacer(
@@ -126,7 +126,7 @@ fun ArtSpaceUi() {
             }
         }
         Spacer(
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier.size(32.dp)
         )
         Row(
             modifier = Modifier.padding(bottom = 23.dp),
@@ -159,7 +159,7 @@ fun ArtSpaceUi() {
                 )
             }
             Spacer(
-                modifier = Modifier.size(30.dp)
+                modifier = Modifier.size(40.dp)
             )
             Surface(
                 shape = RoundedCornerShape(20.dp),
