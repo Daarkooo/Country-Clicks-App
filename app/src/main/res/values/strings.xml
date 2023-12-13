@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">artSpaceApp</string>
+    <string name="app_name">countryClicksApp</string>
+    <string name="NYC">NYC</string>
+    <string name="time_square">Time Square</string>
+    <string name="toronto">Toronto</string>
+    <string name="burj_khalifa">Burj Khalifa</string>
+    <string name="big_ben">Big Ben</string>
+    <string name="holly_wood">Holly Wood</string>
+    <string name="maqam_chahid">Maqam Chahid</string>
+    <string name="nature">Nature</string>
+    <string name="tokyo">Tokyo</string>
+
+    <string name="USA">USA</string>
+    <string name="canada">Canada</string>
+    <string name="dubai">Dubai</string>
+    <string name="switzerland">Switzerland</string>
+    <string name="dz">Algeria</string>
+    <string name="japan">Japan</string>
+    <string name="UK">UK</string>
 </resources>

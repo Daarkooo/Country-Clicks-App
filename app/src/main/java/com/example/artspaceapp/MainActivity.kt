@@ -1,29 +1,20 @@
 package com.example.artspaceapp
 
 import android.os.Bundle
-import android.view.RoundedCorner
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.splineBasedDecay
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.snapping.SnapLayoutInfoProvider
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.currentCompositionLocalContext
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -49,14 +40,55 @@ fun ArtSpaceUi() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ){
+
+        var currentImage by remember { mutableStateOf(1) }
+        var squeezeTapCount by remember { mutableStateOf(2) }
+
+        val numImages = 9
+
+        val step_title=when(currentImage){
+            1->R.string.NYC
+            2->R.string.burj_khalifa
+            3->R.string.time_square
+            4->R.string.big_ben
+            5->R.string.holly_wood
+            6->R.string.maqam_chahid
+            7->R.string.tokyo
+            8->R.string.nature
+            else->R.string.toronto
+        }
+        val step_subtitle=when(currentImage){
+            1->R.string.USA
+            2->R.string.dubai
+            3->R.string.USA
+            4->R.string.UK
+            5->R.string.USA
+            6->R.string.dz
+            7->R.string.japan
+            8->R.string.switzerland
+            else->R.string.canada
+        }
+        val step_image=when(currentImage){
+            1->R.drawable.nyc
+            2->R.drawable.burj_khalifa
+            3->R.drawable.time_square
+            4->R.drawable.big_ben
+            5->R.drawable.hollywood
+            6->R.drawable.maqam_chahid
+            7->R.drawable.tokyo
+            8->R.drawable.switzerland
+            else->R.drawable.toronto
+        }
+
         Surface(
            shadowElevation = 8.dp,
+            color = Color.White,
             modifier = Modifier
                 .padding(16.dp)
         ) {
             Image(
-                painter = painterResource(R.drawable._023_mercedes_benz_glc_class_suv_forward_view_carbuzz_1138364_1600),
-                contentDescription = "Mercedes",
+                painter = painterResource(step_image),
+                contentDescription = " ",
                 contentScale= ContentScale.Crop,
                 modifier = Modifier.size(300.dp)
                     .fillMaxSize()
@@ -75,7 +107,7 @@ fun ArtSpaceUi() {
                     .fillMaxWidth()
             ){
                 Text(
-                    text = "Dream Car",
+                    text = stringResource(step_title),
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
@@ -85,7 +117,7 @@ fun ArtSpaceUi() {
                     modifier = Modifier.size(8.dp)
                 )
                 Text(
-                    text = "Mercedes glc",
+                    text = stringResource(step_subtitle),
                     fontSize = 16.sp,
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
@@ -110,7 +142,14 @@ fun ArtSpaceUi() {
                     fontSize = 16.sp,
                     modifier = Modifier
                         .clickable {
-
+                            when(currentImage){
+                                in 1..<numImages ->{
+                                    currentImage++
+                                }
+                                numImages->{
+                                    currentImage=1
+                                }
+                            }
                         }
                         .padding(
                             vertical =8.dp,
@@ -132,7 +171,14 @@ fun ArtSpaceUi() {
                     fontSize = 16.sp,
                     modifier = Modifier
                         .clickable {
-
+                            when(currentImage) {
+                                1 -> {
+                                    currentImage = numImages
+                                }
+                                in 2..numImages-> {
+                                    currentImage--
+                                }
+                            }
                         }
                         .padding(
                             vertical = 8.dp,
